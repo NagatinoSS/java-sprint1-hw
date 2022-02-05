@@ -1,47 +1,45 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class Main {
-
-
 	public static void printMenu() {//метод списка команд
 		System.out.println("1 - Ввести количество шагов за определённый день;");
 		System.out.println("2 - Напечатать статистику за определённый месяц;");
 		System.out.println("3 - Изменить цель по количеству шагов в день;");
 		System.out.println("0 - Выйти из приложения.");
-
 	}
-
-
 	public static void main(String[] args) {
 		StepTracker stepTrackerUser = new StepTracker();
-
-		StepTracker test = new StepTracker();
-
+//		int [] jnv = new int[]{900,5020,6000,1500,800,5100,3000,1200,5000,11000,5600,1000,6000,
+//				4000,3000,300,1000,4000,1800,11000,0,0,0,0,0,0,0,0,0,0};
+//		stepTrackerUser.mounthTableStep.put(0,jnv);
 		Scanner scanner = new Scanner(System.in);//работа с консолью
 		System.out.println("Прототип приложения «Счётчик калорий».");
-
 		while (true) {// бесконечный цикл
 			System.out.println("------------------------------------");
 			System.out.println("Введите номер нужной Вам опции, из списка действий");//Выберите нужный вариант действия!
 			System.out.println("------------------------------------");
 			printMenu();// вызов метода меню
-
+			//простите конечно, но я видимо один из тех, кому не повезло с этим столкнутся))
+			//у некоторых не было таких обработок ввода, я в принципе не против покопаться ,
+			//но если бы ещё и объяснили как это работает)), так как в уроках всё пересмотрел , но так и не нашел
 			int command;
-			try {
-				command = scanner.nextInt();
-			} catch (InputMismatchException e) {
-				scanner.next();
-				System.out.println("\"Некорректный ввод. Ожидается ввод числа по номеру опций из списка\".");
-				continue;
+			while (true) {
+				if (scanner.hasNextInt()) {
+					command = scanner.nextInt();
+					break;
+				} else {
+					System.out.println("\"Некорректный ввод. Ожидается ввод числа по номеру опций из списка\".");
+					scanner.next();
+				}
 			}
 			if (command == 1) {//Команда - Ввести количество шагов за определённый день;
 				System.out.println("Введите порядковый номер месяца из списка:\n" +
 						"1-\"январь\", 2-\"февраль\", 3-\"март\", 4-\"апрель\", 5-\"май\", 6-\"июнь\"" +
 						",\n7-\"июль\", 8-\"август\", 9-\"сентябрь\", 10-\"октябрь\", " +
 						"11-\"ноябрь\", 12-\"декабрь\".");
-
+				//по поводу "дубляжа и отдельного метода" - я так и не понял как вывести
+				// обработку ввода числа в отдельный метод , там же ещё и вернуть значение надо, я пока не нашел решения
+				//но обещаю, буду стараться искать решение и избегать такого
 				int keyMounth;//переменная ключ ввода месяца через консоль
 				while (true) {
 					if (scanner.hasNextInt()) {
@@ -98,7 +96,6 @@ public class Main {
 						"1-\"январь\", 2-\"февраль\", 3-\"март\", 4-\"апрель\", 5-\"май\", 6-\"июнь\"" +
 						",\n7-\"июль\", 8-\"август\", 9-\"сентябрь\", 10-\"октябрь\", " +
 						"11-\"ноябрь\", 12-\"декабрь\".");
-
 				int keyMounth;//переменная ввода месяца через консоль
 				while (true) {
 					if (scanner.hasNextInt()) {
@@ -121,7 +118,6 @@ public class Main {
 				stepTrackerUser.distanceKm(keyMounth);
 				stepTrackerUser.minusCalories(keyMounth);
 				stepTrackerUser.bestSeries(keyMounth);
-
 				System.out.println();
 			} else if (command == 3) {//Изменить цель по количеству шагов в день;
 				System.out.println("Введите новое значение целевого количества шагов:");
@@ -139,11 +135,8 @@ public class Main {
 						scanner.next();
 					}
 				}//Проверка на отрицательные числа и Некорректный ввод
-
 				int change = stepTrackerUser.changeTargetSteps(value);
 				System.out.println("Новое значение целевого количества шагов: " + change + ";");
-
-
 			} else if (command == 0) {
 				System.out.println("Выход из приложения");
 				break;
