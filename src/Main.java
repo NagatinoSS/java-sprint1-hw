@@ -15,11 +15,6 @@ public class Main {
 	}
 	public static void main(String[] args) {
 		StepTracker stepTrackerUser = new StepTracker();
-				int [] jnv = new int[]{900,5020,6000,1500,800,5100,3000,1200,5000,11000,5600,1000,6000,
-
-				4000,3000,300,1000,4000,1800,11000,0,0,0,0,0,0,0,0,0,0};
-
-		stepTrackerUser.mounthTableStep.put(0,jnv);
 		Scanner scanner = new Scanner(System.in);//работа с консолью
 		System.out.println("Прототип приложения «Счётчик калорий».");
 		while (true) {// бесконечный цикл
