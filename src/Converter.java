@@ -1,12 +1,15 @@
 public class Converter {
-	private static StepTracker user;
 	double stepCm = 0.75;
 	int kCall = 1000;
 	int forStepOneCal = 50;
 	int convertCall(int mounthCall) {
-		return (mounthCall * forStepOneCal) / kCall;
+		if (mounthCall!=0){
+			return (mounthCall * forStepOneCal) / kCall;}
+		else return mounthCall;
 	}
 	double convertInKm(double mountMaxStep) {
-		return (mountMaxStep * stepCm) / 1000;
+		if (mountMaxStep!=0){
+		return (mountMaxStep * stepCm) / 1000;}
+		else return mountMaxStep;
 	}
 }
