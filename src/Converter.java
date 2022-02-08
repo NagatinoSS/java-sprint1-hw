@@ -1,15 +1,17 @@
 public class Converter {
-	double stepCm = 0.75;
-	int kCall = 1000;
-	int forStepOneCal = 50;
-	int convertCall(int mounthCall) {
-		if (mounthCall!=0){
-			return (mounthCall * forStepOneCal) / kCall;}
-		else return mounthCall;
-	}
-	double convertInKm(double mountMaxStep) {
-		if (mountMaxStep!=0){
-		return (mountMaxStep * stepCm) / 1000;}
-		else return mountMaxStep;
-	}
+    double stepCm = 0.75;
+    int kCall = 1_000;
+    int forStepOneCal = 50;
+
+    int convertCall(int monthCall) {
+        if (monthCall != 0) {
+            return (monthCall * forStepOneCal) / kCall;
+        } else return monthCall;
+    }
+
+    double convertInKm(double montMaxStep) {
+        if (montMaxStep != 0) {
+            return (montMaxStep * stepCm) / 1000;
+        } else return montMaxStep;
+    }
 }
